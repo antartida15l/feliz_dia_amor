@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pinyon+Script&family=Caveat:wght@400;700&display=swap');
+
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+html, body {
+  width:100%; height:100%;
+  background:#000;
+  color:#fff;
+  font-family:'Caveat',cursive;
+  overflow:hidden;
+}
+
+.screen {
+  position:fixed; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.8s ease;
+}
+.screen.active { opacity:1; pointer-events:all; z-index:10; }
+
+canvas.bg {
+  position:absolute; inset:0; width:100%; height:100%; z-index:0;
+}
+
+.content { position:relative; z-index:2; text-align:center; }
+
+/* ── SCREEN 1 WELCOME ── */
+#s1 .content {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  padding:20px;
+  width:100%;
+  max-width:500px;
+}
+
+/* GLOBOS — imagen o svg, mismo tamaño controlado */
+.balloons-svg,
+img.balloons-svg {
+  width:clamp(180px, 38vw, 260px);
+  height:auto;
+  max-height:280px;
+  object-fit:contain;
+  display:block;
+  animation:float 3.2s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes float {
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-12px) rotate(2deg)}
+}
+
+.para-label {
+  font-size:clamp(11px,2vw,14px);
+  letter-spacing:8px; color:#999; text-transform:uppercase;
+  flex-shrink:0;
+}
+
+/* NOMBRE — imagen o h1, tamaño fijo y controlado */
+.name-hero,
+img.name-hero {
+  width:clamp(260px, 65vw, 480px);
+  height:auto;
+   max-height:160px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
+  flex-shrink:0;
+  /* para el h1 de texto */
+  font-family:'Pinyon Script',cursive;
+  font-size:clamp(64px,15vw,100px);
+  line-height:0.95;
+  color:#fff;
+}
+
+/* quita animación y sombra de texto cuando es imagen */
+img.name-hero {
+  animation:none;
+  text-shadow:none;
+  filter:drop-shadow(0 0 20px rgba(244,114,182,0.4));
+}
+
+/* sombra animada solo cuando es texto h1 */
+h1.name-hero {
+  text-shadow:0 0 30px rgba(244,114,182,0.5);
+  animation:namepulse 2.4s ease-in-out infinite;
+}
+@keyframes namepulse {
+  0%,100%{text-shadow:0 0 20px rgba(244,114,182,0.3)}
+  50%{text-shadow:0 0 55px rgba(192,132,252,0.9),0 0 90px rgba(244,114,182,0.4)}
+}
+
+.underline-crayon {
+  height:3px;
+  width:min(200px, 52vw);
+  margin:-8px auto 0;
+  background:repeating-linear-gradient(90deg,#f472b6 0,#f472b6 8px,transparent 8px,transparent 14px);
+  flex-shrink:0;
+}
+
+/* Ocultar underline si hay imagen de nombre */
+img.name-hero ~ .underline-crayon {
+  display:none;
+}
+
+.btn-crayon {
+  background:none;
+  border:2px solid rgba(255,255,255,0.65);
+  color:#fff;
+  font-family:'Caveat',cursive;
+  font-size:clamp(15px,3vw,20px);
+  padding:12px 32px;
+  cursor:pointer;
+  letter-spacing:2px;
+  position:relative;
+  transition:transform 0.2s, box-shadow 0.2s;
+  flex-shrink:0;
+}
+.btn-crayon::before {
+  content:'';
+  position:absolute; inset:5px;
+  border:1px dashed rgba(255,255,255,0.25);
+  pointer-events:none;
+}
+.btn-crayon:hover {
+  transform:scale(1.05) rotate(-1deg);
+  box-shadow:0 0 24px rgba(244,114,182,0.5);
+}
+
+/* ── SCREEN 2 BIRTHDAY ── */
+#s2 .content {
+  display:flex; flex-direction:column; align-items:center; gap:18px;
+}
+
+.feliz-block { line-height:1.05; }
+
+.feliz-small {
+  font-family:'Caveat',cursive;
+  font-size:clamp(13px,2.5vw,17px);
+  letter-spacing:8px; color:#bbb; text-transform:uppercase;
+  display:block;
+}
+.feliz-small.right { text-align:right; }
+
+.feliz-grande {
+  font-family:'Pinyon Script',cursive;
+  font-size:clamp(54px,13vw,88px);
+  color:#fff;
+  display:block;
+  text-shadow:0 0 24px rgba(255,255,255,0.15);
+}
+
+.date-row {
+  display:flex; align-items:center;
+  gap:clamp(8px,2vw,16px);
+}
+
+.arrow-big {
+  font-size:clamp(24px,5vw,40px);
+  font-weight:700;
+  animation:bounce 1s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(8px)}
+}
+
+.drum-outer {
+  position:relative;
+  width:clamp(70px,15vw,100px);
+  height:clamp(110px,22vw,150px);
+  overflow:hidden;
+  border:2px solid rgba(255,255,255,0.2);
+  border-radius:8px;
+}
+.drum-outer::before,.drum-outer::after {
+  content:''; position:absolute; left:0; right:0;
+  height:35px; z-index:3; pointer-events:none;
+}
+.drum-outer::before { top:0; background:linear-gradient(to bottom,#000,transparent); }
+.drum-outer::after  { bottom:0; background:linear-gradient(to top,#000,transparent); }
+
+.drum-tape {
+  display:flex; flex-direction:column;
+  transition:transform 0.05s linear;
+  will-change:transform;
+}
+
+.drum-num {
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Caveat',cursive;
+  font-size:clamp(52px,12vw,80px);
+  font-weight:700;
+  color:rgba(255,255,255,0.22);
+  transition:color 0.08s;
+  flex-shrink:0;
+}
+.drum-num.lit {
+  color:#fff;
+  text-shadow:0 0 24px #f472b6, 0 0 48px rgba(244,114,182,0.4);
+}
+
+.play-tri { font-size:clamp(18px,3.5vw,26px); }
+
+.month-col {
+  display:flex; flex-direction:column; align-items:flex-start; line-height:1.1;
+}
+.month-txt {
+  font-family:'Caveat',cursive;
+  font-size:clamp(26px,5.5vw,42px);
+  font-weight:700; letter-spacing:4px;
+}
+.sep-line {
+  width:100%; height:2px; margin:3px 0;
+  background:repeating-linear-gradient(90deg,#fff 0,#fff 6px,transparent 6px,transparent 11px);
+}
+.year-txt {
+  font-family:'Caveat',cursive;
+  font-size:clamp(20px,4.5vw,34px);
+  color:#bbb; letter-spacing:3px;
+}
+
+.cake-svg {
+  width:clamp(140px,35vw,210px);
+  opacity:0;
+  animation:cakeIn 1.2s ease forwards;
+  animation-play-state:paused;
+  filter:drop-shadow(0 0 12px rgba(244,114,182,0.25));
+}
+@keyframes cakeIn {
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.btn-small {
+  display:none;
+  background:none;
+  border:1px dashed rgba(255,255,255,0.4);
+  color:#fff;
+  font-family:'Caveat',cursive;
+  font-size:clamp(14px,2.5vw,18px);
+  padding:10px 26px;
+  cursor:pointer;
+  letter-spacing:1px;
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.btn-small:hover {
+  transform:scale(1.04);
+  box-shadow:0 0 16px rgba(167,139,250,0.4);
+}
+
+/* ── SCREEN 3 LETTER ── */
+#s3 .content {
+  width:min(1800px,92vw);
+}
+
+.letter-card {
+  background:rgba(8,3,20,0.9);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:4px;
+  padding:clamp(24px,5vw,44px) clamp(20px,6vw,52px) clamp(20px,4vw,36px);
+  display:flex; flex-direction:column; gap:16px;
+  position:relative;
+  backdrop-filter:blur(6px);
+}
+
+.corner {
+  position:absolute; width:24px; height:24px;
+  border-color:rgba(244,114,182,0.55);
+  border-style:dashed;
+}
+.ctlef { top:10px; left:10px; border-width:2px 0 0 2px; }
+.ctrig { top:10px; right:10px; border-width:2px 2px 0 0; }
+.cblef { bottom:10px; left:10px; border-width:0 0 2px 2px; }
+.cbrig { bottom:10px; right:10px; border-width:0 2px 2px 0; }
+
+.letter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.photo-box {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border: 2px dashed rgba(192,132,252,0.55);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: #a78bfa;
+  font-family: 'Caveat', cursive;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+.photo-box:hover { background: rgba(192,132,252,0.08); }
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+.photo-box input { display:none; }
+
+.letter-to {
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(22px,5vw,32px);
+  color:#f9a8d4;
+}
+
+.letter-area {
+  min-height:420px;
+  background:none;
+  border:none;
+  outline:none;
+  resize:none;
+  overflow:hidden;
+
+  color:#fff;
+  font-family:'Caveat',cursive;
+  font-size:clamp(16px,3vw,20px);
+  line-height:2;
+  width:100%;
+
+  background-image:repeating-linear-gradient(
+    transparent,transparent 37px,
+    rgba(255,255,255,0.06) 37px,
+    rgba(255,255,255,0.06) 38px
+  );
+
+  background-position:0 4px;
+}
+.letter-area::placeholder { color:rgba(255,255,255,0.22); }
+
+.letter-sign {
+  font-family:'Pinyon Script',cursive;
+  font-size:clamp(22px,4vw,30px);
+  color:#a78bfa; text-align:right;
+}
+#s3.active {
+  overflow-y: auto !important;
+}

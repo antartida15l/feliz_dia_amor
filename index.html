@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feliz Cumpleaños Libertad</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pinyon+Script&family=Caveat:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <section id="s1" class="screen active">
+    <canvas class="bg" id="c1"></canvas>
+    <div class="content">
+      <img src="img/globos.png" class="balloons-svg" alt="globos"/>
+        <g>
+          <ellipse cx="52" cy="72" rx="36" ry="44" fill="none" stroke="#c084fc" stroke-width="2.5" stroke-dasharray="5 3"/>
+          <ellipse cx="52" cy="72" rx="22" ry="30" fill="none" stroke="#c084fc" stroke-width="1" stroke-dasharray="2 5" opacity="0.4"/>
+          <line x1="52" y1="116" x2="62" y2="235" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 3"/>
+        </g>
+        <g>
+          <path d="M100 105 C100 105 70 86 70 62 C70 47 82 38 100 54 C118 38 130 47 130 62 C130 86 100 105 100 105Z" fill="none" stroke="#f472b6" stroke-width="2.5" stroke-dasharray="5 3"/>
+          <line x1="100" y1="105" x2="92" y2="235" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="3 3"/>
+        </g>
+        <g>
+          <ellipse cx="150" cy="62" rx="32" ry="42" fill="none" stroke="#818cf8" stroke-width="2.5" stroke-dasharray="5 3"/>
+          <ellipse cx="150" cy="62" rx="20" ry="28" fill="none" stroke="#818cf8" stroke-width="1" stroke-dasharray="2 5" opacity="0.4"/>
+          <line x1="150" y1="104" x2="108" y2="235" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="3 3"/>
+        </g>
+        <path d="M62 235 Q80 242 92 235 Q96 233 108 235" fill="none" stroke="#888" stroke-width="1.5"/>
+      </svg>
+      <p class="para-label">para mi</p>
+      <img src="img/libertad.png" class="name-hero" alt="Libertad"/>
+      <div class="underline-crayon"></div>
+      <button class="btn-crayon" id="btn1">✦ Presiona acá ✦</button>
+    </div>
+  </section>
+
+  <section id="s2" class="screen">
+    <canvas class="bg" id="c2"></canvas>
+    <div class="content">
+      <div class="feliz-block">
+        <span class="feliz-small">Feliz</span>
+        <span class="feliz-grande">Cumpleaños</span>
+        <span class="feliz-small right">a ti</span>
+      </div>
+      <div class="date-row">
+        <span class="arrow-big">→</span>
+        <div class="drum-outer">
+          <div class="drum-tape" id="drum"></div>
+        </div>
+        <span class="play-tri">▶</span>
+        <div class="month-col">
+          <span class="month-txt">MAY</span>
+          <div class="sep-line"></div>
+          <span class="year-txt">2026</span>
+        </div>
+      </div>
+      <svg class="cake-svg" id="cake" viewBox="0 0 200 155" xmlns="http://www.w3.org/2000/svg">
+        <rect x="72" y="30" width="7" height="24" rx="3" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 2"/>
+        <ellipse cx="75" cy="28" rx="4" ry="7" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="2 2"/>
+        <rect x="92" y="20" width="7" height="30" rx="3" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 2"/>
+        <ellipse cx="95" cy="18" rx="4" ry="7" fill="none" stroke="#f472b6" stroke-width="2" stroke-dasharray="2 2"/>
+        <rect x="113" y="26" width="7" height="24" rx="3" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 2"/>
+        <ellipse cx="116" cy="24" rx="4" ry="7" fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="2 2"/>
+        <rect x="30" y="54" width="140" height="28" rx="3" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5 3"/>
+        <rect x="35" y="82" width="130" height="32" rx="3" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5 3"/>
+        <rect x="40" y="114" width="120" height="24" rx="3" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5 3"/>
+        <ellipse cx="100" cy="138" rx="68" ry="7" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 3"/>
+        <path d="M35 82 Q55 74 75 82 Q95 74 115 82 Q135 74 155 82 Q163 78 165 82" fill="none" stroke="#f9a8d4" stroke-width="1.8" stroke-dasharray="3 3"/>
+        <path d="M40 114 Q58 106 78 114 Q98 106 118 114 Q138 106 158 114" fill="none" stroke="#c4b5fd" stroke-width="1.8" stroke-dasharray="3 3"/>
+        <circle cx="52" cy="68" r="2.5" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+        <circle cx="100" cy="64" r="2.5" fill="none" stroke="#f472b6" stroke-width="1.5"/>
+        <circle cx="148" cy="68" r="2.5" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+      </svg>
+      <button class="btn-small" id="btn2">✉ Ver mi carta ✉</button>
+    </div>
+  </section>
+
+  <section id="s3" class="screen">
+    <canvas class="bg" id="c3"></canvas>
+    <div class="content letter-card">
+      <div class="corner ctlef"></div>
+      <div class="corner ctrig"></div>
+      <div class="corner cblef"></div>
+      <div class="corner cbrig"></div>
+    
+      <p class="letter-to">Para Libertad,</p>
+       <div class="photo-box">
+        <img id="pimg" src="img/foto.png" alt="foto"/>
+        <span id="ptxt" style="display:none;">+ foto</span>
+        <input type="file" id="pi" accept="image/*" style="display:none;"/>
+      </div>
+      <textarea class="letter-area" placeholder="Amorrrrrrrrrrrrrrrrr, oli, andresito la extraña muchooo, feliz cumpleaños mi liber 
+      le soy gracias a la vida por darme la oportunidad de conocerte y poder pasar tiempo contigo, no sabes cuanto me has ayudado, te amo mucho espero de corazon que no olvides que este dia para mi es muy importante te quiero ver feliz, aunque la vida te la ponga
+      dificil creeme que ahi estare yo para acompañarte no lo pienses dos veces en apoyarte en mi si, aunque nadie quiera andresito siempre estara ahi para ti, si amor, tristezas fuera todo va mejorar poco a poco, no quiero que te me desanimes por nada ni por nadie shu mi amor?, ojala hoy sonrías muchísimo mi amor, porque tu sonrisa de verdad hace feliz a andresito, nunca olvides lo valiosa e increíble que eres para mi, feliz cumpleaños mi niña hermosa y si pudiera pedir un deseo hoy, pediria seguir compartiendo muchos cumpleaños mas contigo, abrazarte fuerte y verte feliz siempre, te amo mucho amor demasiadoooooooooooooooooooooooo"></textarea>
+      <p class="letter-sign">ATTE Andresito mas na hzbdksbjcd♥</p>
+    </div>
+  </section>
+
+ <audio id="bg-music" autoplay loop muted>
+  <source src="music/findo.mp3" type="audio/mpeg"/>
+</audio>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
